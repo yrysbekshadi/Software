@@ -1,0 +1,24 @@
+@startuml
+left to right direction
+
+actor Student
+actor Administrator
+
+rectangle "Smart Campus" {
+  usecase "View room availability screen" as UC_View
+  usecase "Book room" as UC_Book
+  usecase "Cancel booking" as UC_Cancel
+  usecase "Block / unblock room" as UC_Block
+  usecase "Review usage" as UC_Review
+  usecase "Send confirmation" as UC_Confirm
+}
+
+Student --> UC_View
+Student --> UC_Book
+Student --> UC_Cancel
+Student --> UC_Confirm
+Administrator --> UC_Block
+Administrator --> UC_Review
+Administrator --> UC_Book
+
+@enduml

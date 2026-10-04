@@ -1,0 +1,48 @@
+# week-04/submission.yml — filled for the prepared Week 04 package.
+# Update checker.commit to the short SHA from the final commit in your repository.
+
+schema: 1
+week: "04"
+
+student:
+  name: Shadi Yrysbek
+  student_id: 24B031125
+  github: yrysbekshadi
+
+assistant:
+  tool: ChatGPT
+  model: GPT-5.6 Luna
+
+counts:
+  behaviour_diagram: sequence
+  stories_source: reference
+  use_cases: 5
+  change_log_rows: 3
+
+checker:
+  pass: 37
+  fail: 0
+  error: 0
+  commit: 0000000
+  kept_fails: []
+
+assumptions:
+  overlap_touching_bookings: allowed
+  blocking_a_booked_room: keep-bookings
+
+traceability:
+  use_cases_not_traced: []
+  rules_not_shown: []
+
+review_findings:
+  - "The use-case `View room availability screen` was a UI element, so I changed it to the goal `View availability` for US-02."
+  - "The use-case `Send confirmation` was an outcome of US-01 under R4, not an actor goal, so I removed it."
+  - "The class association `Student 1 *-- 1..* Booking` was unjustified composition and the wrong multiplicity, so I changed it to 1 / 0..*."
+  - "The class association `Room 1 -- 1..* Booking` required every room to have a booking, so I changed the Booking end to 0..*."
+  - "The sequence originally created a booking before R1-R3 validation, so I moved creation and saving after all rule checks."
+  - "The sequence failure branch saved a failed booking, so I removed persistence from the unavailable branch."
+
+honesty:
+  originals_unedited: yes
+  can_explain_everything_submitted: yes
+  ai_usage_disclosed: yes

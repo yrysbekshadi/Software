@@ -1,0 +1,28 @@
+@startuml
+class Student {
+  studentId: String
+  name: String
+}
+
+class Room {
+  roomId: String
+  name: String
+  blocked: Boolean
+}
+
+class Booking {
+  bookingId: String
+  start: DateTime
+  durationHours: Decimal
+  status: String
+}
+
+class BookingService {
+  +bookRoom()
+}
+
+Student "1" *-- "1..*" Booking : owns
+Room "1" -- "1..*" Booking : contains
+Booking --> BookingService : uses
+
+@enduml

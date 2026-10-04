@@ -1,0 +1,50 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+class Student {
+  -studentId: String
+  -name: String
+  +viewAvailability(): void
+  +bookRoom(): Booking
+  +cancelBooking(bookingId: String): void
+}
+
+class Room {
+  -roomId: String
+  -name: String
+  -blocked: Boolean
+  +isAvailable(): Boolean
+  +block(): void
+  +unblock(): void
+}
+
+class Booking {
+  -bookingId: String
+  -start: DateTime
+  -end: DateTime
+  -status: String
+  +isActive(): Boolean
+  +cancel(): void
+}
+
+Student "1" -- "0..*" Booking : makes
+Room "1" -- "0..*" Booking : has
+
+note right of Booking
+R2: Active bookings for the same room cannot overlap.
+An active booking is identified by status = ACTIVE.
+The association multiplicity does not express non-overlap.
+end note
+
+note right of Room
+R3: blocked = true means the room cannot accept a new booking.
+Assumption A2: existing bookings remain when a room is blocked.
+end note
+
+note bottom of Booking
+R1: start must be in the future; end - start > 0 and <= 2 hours.
+Assumption A1: bookings that only touch at an endpoint do not overlap.
+end note
+
+
+@enduml
