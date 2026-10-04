@@ -1,0 +1,31 @@
+@startuml
+left to right direction
+
+actor Student
+actor Administrator
+
+rectangle "Smart Campus" {
+  usecase "View availability" as UC_View
+  usecase "Book room" as UC_Book
+  usecase "Cancel booking" as UC_Cancel
+  usecase "Block / unblock room" as UC_Block
+  usecase "Review usage" as UC_Review
+}
+
+Student --> UC_View
+Student --> UC_Book
+Student --> UC_Cancel
+Administrator --> UC_Block
+Administrator --> UC_Review
+
+note right of UC_Book
+R1: start is in the future; duration > 0 and <= 2 hours.
+R2: active bookings for the same room cannot overlap.
+R3: a blocked room cannot accept a new booking.
+R4: a successful booking produces a confirmation.
+Assumptions:
+A1: touching bookings are allowed (12:00 end and 12:00 start do not overlap).
+A2: blocking a booked room keeps existing bookings; it prevents new ones.
+end note
+
+@enduml
