@@ -1,0 +1,44 @@
+# Fill checker.commit with the real short hash after the last checker run on your week-05 branch.
+schema: 1
+week: "05"
+
+student:
+  name: Shadi Yrysbek
+  student_id: 24B031125
+  github: yrysbekshadi
+
+assistant:
+  tool: ChatGPT
+  model: GPT-6
+
+language:
+  name: python
+  path: A
+
+counts:
+  tests: 24
+  v1_changed: no
+  change_log_rows: 1
+
+checker:
+  pass: 32
+  fail: 0
+  error: 0
+  commit: ""  # Fill with `git rev-parse --short HEAD` in the actual se-practice checkout after the final checker run.
+  known_fails: []
+
+assumptions:
+  non_integer_time: not-handled
+
+carried:
+  week04_touching: allowed  # Provisional; verify against week-04/submission.yml before submission.
+
+review_findings:
+  - "F7: strict overlap comparisons allow bookings whose endpoints touch, as AC4 requires."
+  - "M9: test_unsorted_existing_list_is_not_modified checks the input-list immutability contract."
+  - "AC1: test_one_minute_booking_at_day_end_is_allowed verifies a valid one-minute request ending at 1440."
+
+honesty:
+  v1_unedited: yes
+  can_explain_overlap_without_ai: no
+  ai_usage_disclosed: yes
