@@ -1,0 +1,50 @@
+# SIS #03 — personal details and Git commit must be filled in the student's repository.
+schema: 1
+assignment: "sis-03"
+
+student:
+  name: "Shadi Yrysbek"
+  student_id: "24B031125"
+  group: "PENDING"
+  github: "PENDING"
+
+assistant:
+  tool: "ChatGPT (web)"
+  model: "GPT-6"
+
+bolt:
+  model: "not displayed"
+  project_url: "https://bolt.new/~/sb1-jw4fikxw?focus=create-project"
+
+language:
+  name: "python"
+  path: "A"
+
+reuse:
+  python_v1: "fresh"
+  web_v1: "fresh"
+
+checker:
+  pass: 53
+  fail: 2
+  error: 0
+  commit: "PENDING — fill after the final repository commit"
+
+counts:
+  tests: 22
+  exchanges: 7
+  issues: 6
+  critique_decisions: 5
+  reflection_words: 187
+
+cases:
+  python_final_matches: 11
+  page_final_matches: 2
+
+known_fails: ["C1", "C4"]
+
+honesty:
+  v1_unedited: "yes"
+  screenshots_unedited: "no"
+  results_observed: "no"
+  ai_usage_disclosed: "yes"
