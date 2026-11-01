@@ -1,0 +1,68 @@
+SIS #03 - can_book, the Bolt prototype, the evidence   (Path A)
+Checks behaviour and shape, never the quality of your review.
+
+PASS   R1   report.md: sections 1-13 present, in order                                       sections 1-13 present, in order
+PASS   R2   report.md: no template markers left                                              no template markers left
+PASS   R3   section 1: setup and reuse table complete                                        tool, models, project link, language, path and reuse recorded
+PASS   B1   section 2: baseline - scope, criteria, failure points, contract, assumptions     scope, AC1-AC6 in your words, 2 failure points, contract, 2 assumptions
+PASS   F1   the six cases from the brief                                                     6 of 6 cases
+PASS   F2   AC1 time order and day bounds                                                    5 of 5 cases
+PASS   F3   AC1 the start is in the future                                                   5 of 5 cases
+PASS   F4   AC2 at most 120 minutes                                                          3 of 3 cases
+PASS   F5   AC3 a blocked room accepts nothing                                               2 of 2 cases
+PASS   F6   AC4 every kind of overlap is rejected                                            5 of 5 cases
+PASS   F7   AC4 touching endpoints are allowed                                               3 of 3 cases
+PASS   F8   AC4 every existing booking is checked                                            4 of 4 cases
+PASS   F9   AC5 the result is a real Boolean                                                 3 of 3 cases
+PASS   F10  AC5 the inputs are left unchanged                                                2 of 2 cases
+PASS   O1   the first Python version is kept in code/original/                               v1 kept (14 lines)
+PASS   U1   your suite has at least 10 tests                                                 22 tests
+PASS   U2   your suite is green on your own code                                             22 tests, OK
+PASS   M1   your tests catch a fault                                                         AC1 - caught by test_start_at_midnight_must_still_be_after_now, test_start_equal_to_now_is_rejected
+PASS   M2   your tests catch a fault                                                         AC1 - caught by test_end_after_midnight_boundary_is_rejected
+PASS   M3   your tests catch a fault                                                         AC1 - caught by test_zero_length_interval_is_rejected
+PASS   M4   your tests catch a fault                                                         AC2 - caught by test_exactly_120_minutes_is_allowed
+PASS   M5   your tests catch a fault                                                         AC3 - caught by test_blocked_room_is_unavailable
+PASS   M6   your tests catch a fault                                                         AC4 - caught by test_touching_at_existing_end_is_available, test_touching_at_existing_start_is_available
+PASS   M7   your tests catch a fault                                                         AC4 - caught by test_existing_list_is_not_mutated_after_rejected_check, test_second_existing_booking_is_checked
+PASS   M8   your tests catch a fault                                                         AC4 - caught by test_candidate_that_contains_existing_booking_is_rejected
+PASS   M9   your tests catch a fault                                                         AC5 - caught by test_existing_list_is_not_mutated_after_available_check
+PASS   M10  your tests catch a fault                                                         AC5 - caught by test_existing_list_is_not_mutated_after_available_check, test_existing_list_is_not_mutated_after_rejected_check
+PASS   V1   section 3: v1 reviewed branch by branch, AC1-AC4                                 6 branches reviewed, AC1-AC4 all named
+PASS   V2   section 8: three critique decisions, one reject or modify                        5 decisions, 2 rejected or modified
+PASS   W1   final prototype exported to web/final/                                           web/final: 10 source files
+PASS   W2   exports are clean: no node_modules, no .env, under 5 MB                          clean
+PASS   W3   final stays in scope: no network, storage, backend, login                        nothing out of scope found in the source
+PASS   W4   v1 export kept in web/original/                                                  web/original
+PASS   W5   final differs from v1                                                            2 file(s) changed, e.g. package.json, src/App.tsx
+PASS   G1   section 4: generated files named by real paths                                   7 files named, found in web/original/: index.html, package.json, src/App.tsx
+PASS   E1   v1 screenshot: evidence/web-v1.png                                               evidence/web-v1.png
+PASS   E2   before/after screenshots: evidence/before-1.png, after-1.png                     before-1 and after-1, different
+PASS   E3   narrow-width screenshot: evidence/final-narrow.png, portrait                     495x863
+FAIL   C1   section 5: T1-T12 present, expected unchanged, every result filled               T1 page final: write Available, Unavailable or Not testable; T2 page final: write Available, Unavailable or Not testable; T3 page v1: write Available, Unavailable or Not testable; T4 page v1: write Available, Unavailable or Not testable; T4 page final: write Available, Unavailable or Not testable (+11 more)
+PASS   C2   section 5: Python v1 results are what v1 returns                                 all 11 match a run of code/original/booking_v1.py
+PASS   C3   section 5: Python final results are what your final returns                      all 11 match a run of code/booking.py
+FAIL   C4   section 5: page final matches the expected result                                page final differs from expected - T1: empty, T2: empty, T4: empty, T5: empty, T6: empty, T7: empty, T11: empty, T12: empty
+PASS   TR1  section 6: traceability for AC1-AC6                                              AC1-AC6 each traced to a file, inputs, expected, v1 and final
+PASS   I1   section 7: two issues or more, each complete                                     6 issues, each with reproduction, priority, change and retest
+PASS   I2   section 7: focused prompts, reproductions and the before/after line              reproductions named, prompts focused, before/after described
+PASS   A1   section 9.1: one pass through the agent loop                                     all six steps described
+PASS   A2   section 9.2: context, tools, permissions - observed and assumed                  4 rows - 3 observed, 1 assumed
+PASS   A3   section 9.3: safety checkpoint and dependability                                 checkpoint 75 words, dependability 104 words
+PASS   X1   section 11: four exchanges or more, metadata complete                            7 exchanges, tool, model, date, stage and source on each
+PASS   X2   section 11: prompts and responses pasted in full                                 every prompt and response pasted in full
+PASS   X3   section 11: stages Plan, Generate, Critique and Repair all present               Plan B1, Generate B2,B5, Critique B3, Repair B4,B6,B7
+PASS   X4   section 4: the Bolt prompt carries AC1-AC6 and forbids login, backend, database  AC1-AC6 included; login, backend and database excluded
+PASS   X5   section 11: your Python v1 is inside a Generate response                         100% of your v1 is in a Generate response
+PASS   K1   section 12.1: real output of your suite                                          suite output pasted
+PASS   Q1   section 10: reflection of 100-200 words                                          187 words, range 100-200
+------------------------------------------------------------------------------
+Your v1 returns:    T1 false  T2 false  T3 false  T4 true  T5 false  T6 true  T7 false  T8 true  T9 false  T10 false  T11 false
+Your final returns: T1 true  T2 false  T3 false  T4 true  T5 false  T6 false  T7 false  T8 true  T9 false  T10 false  T11 true
+v1 (web/original/) has out-of-scope code: backend or database - a candidate for your issue log.
+Not counted for M - these fail on a can_book that follows the contract exactly: test_non_integer_candidate_values_are_rejected
+SUMMARY pass=53 fail=2 error=0   (55 checks)
+Every FAIL or ERROR you keep goes in report.md section 13 and in submission.yml known_fails.
+One you report and explain costs you nothing. One you hide costs the whole criterion.
+
+EXIT_CODE=1

@@ -1,0 +1,19 @@
+SIS 03 — CURRENT ASSEMBLED STATE
+
+Included now:
+- Python v1, final and 22 unit tests.
+- Fresh Bolt v1 export in web/original/.
+- Repaired Bolt final export in web/final/.
+- User-provided v1/final/T3/T10/mobile screenshots in evidence/ and evidence/source-originals/.
+- Report sections 1, 3–9, 11–13 updated to reflect the supplied exports and observed evidence.
+- AI_USAGE.md updated with ChatGPT, Bolt.new and local tooling disclosure.
+
+Still required before submission:
+1. Student writes Section 2 (baseline) without AI and handles the baseline-first chronology deviation honestly.
+2. Student reviews and rewrites the AI-assisted reflection draft in their own words (100–200 words).
+3. Run remaining browser cases T1–T12 on both web/original and web/final; report only observed results. Current screenshots establish v1 T1/T2 and final T3/T10; T8/T9 are not testable through native time inputs.
+4. Run npm ci, npm run typecheck and npm run build in web/final/ online. The local offline install could not finish.
+5. Student name and ID have been filled. Add group and GitHub username if required, record actual checker counts after rerun, and fill the real git commit hash in submission.yml.
+6. Use the actual se-practice repository: branch sis-03, at least 3 authored commits, push, open PR to main, do not merge. Submit PR URL in Teams.
+
+Do not claim the archive is a completed or submission-ready assignment until these are done.
