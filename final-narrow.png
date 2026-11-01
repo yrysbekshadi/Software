@@ -1,0 +1,22 @@
+SIS #03 declaration — submission.yml
+Checks SHAPE, never QUALITY.
+
+  PASS   D1   schema 1, assignment sis-03
+  PASS   D2   student.name: Shadi Yrysbek
+  PASS   D3   student.student_id: 24B031125
+  PASS   D4   student.group: PENDING
+  PASS   D5   student.github: PENDING
+  PASS   D6   assistant.tool: ChatGPT (web)
+  PASS   D7   assistant.model: GPT-6
+  PASS   D8   bolt: not displayed, https://bolt.new/~/sb1-jw4fikxw?focus=create-project
+  PASS   D9   language python, Path A
+  PASS   D10  reuse matches report.md section 1
+  PASS   D11  pass + fail + error = 55
+  PASS   D12  declared 53/2/0, a run now gives 53/2/0
+  FAIL   D13  checker.commit must be a hash from git rev-parse --short HEAD, got 'PENDING — fill after the final repository commit'
+  PASS   D14  counts: all match
+  PASS   D15  cases: match section 5
+  PASS   D16  known_fails matches the checker: ['C1', 'C4']
+  PASS   D17  honesty: answered
+
+SUMMARY pass=16 fail=1 error=0
