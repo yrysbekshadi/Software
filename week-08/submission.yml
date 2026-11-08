@@ -1,0 +1,48 @@
+# Fill the remaining student/run/commit facts after real local execution.
+schema: 1
+week: "08"
+
+student:
+  name: "Shadi Yrysbek"
+  student_id:
+  github: "yrysbekshadi"
+
+assistant:
+  tool: "ChatGPT"
+  model: "GPT-6"
+
+skill:
+  environment:
+  invoked: "not-shown"
+
+project:
+  language: "ts"
+  vitest:
+
+counts:
+  tests_final: 17
+  buggy_failed:
+  defects_logged: 2
+  lines_changed: 15
+
+checker:
+  pass: 19
+  fail: 11
+  error: 1
+  commit:
+  known_fails: [B3, S3, S4, S5, E1, R1, R2, R3, L3, L4, L5, L6]
+
+verdict:
+  skill_helped:
+
+review_findings:
+  - "BUG-A: inclusive <= and >= comparisons incorrectly reject intervals that only touch an existing booking."
+  - "BUG-B: bookings.push mutates caller-owned bookings while canBook is intended only to decide availability."
+  - "AC5: the BUG-B regression test takes a copy before the call and compares the array afterwards."
+  - "Skill step 4: distinguish the confirmed overlap defect from the separate array-mutation hypothesis until its regression test is observed."
+
+honesty:
+  buggy_function_pasted_unchanged: "no"
+  same_input_both_chats: "no"
+  outputs_unedited: "no"
+  ai_usage_disclosed: "yes"
