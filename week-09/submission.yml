@@ -1,0 +1,37 @@
+# week-09/submission.yml — facts only. Explanations live in lab-report.md.
+schema: 1
+week: "09"
+
+student:
+  name: "Shadi Yrysbek"
+  student_id: "24B031125"
+  github: "yrysbekshadi"
+
+assistant:
+  tool: "Grok"
+  model: "not displayed"
+  fresh_chats: "yes"
+
+calls:
+  r3: "asked"
+  first_run_s_fails: 9
+
+checker:
+  pass: 30
+  fail: 0
+  error: 0
+  commit: "29c87b0"
+  known_fails: []
+
+review_findings:
+  - "S07: the blank schema accepted end 1500 until maximum 1440 was added."
+  - "R2: the model called check_room with blocked true and end 990, so Unavailable stays inside canBook."
+  - "R3: the model asked and did not invent now, start, end, blocked, or bookings."
+  - "AC2: 14:00 to 16:30 is 150 minutes, and these keywords cannot compare end minus start."
+  - "A8: sending .env to an online MCP server would expose secrets that check_room never needs."
+
+honesty:
+  definition_written_by_me: "no"
+  calls_unedited: "yes"
+  outputs_unedited: "yes"
+  ai_usage_disclosed: "yes"

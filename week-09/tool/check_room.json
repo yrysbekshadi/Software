@@ -1,0 +1,54 @@
+{
+  "name": "check_room",
+  "description": "Check whether a meeting room is free for one requested interval. Every time value is a whole number of minutes since midnight, from 0 to 1440 inclusive, and 1440 means 24:00. You must pass the requested start, the requested end, the current time now, whether the room is blocked, and the list of existing bookings. This tool only checks availability and returns an answer. It does not save, create, or change a booking.",
+  "inputSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "start": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 1440,
+        "description": "Requested start in whole minutes since midnight."
+      },
+      "end": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 1440,
+        "description": "Requested end in whole minutes since midnight. 1440 means 24:00."
+      },
+      "now": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 1440,
+        "description": "Current time in whole minutes since midnight."
+      },
+      "blocked": {
+        "type": "boolean",
+        "description": "True when the room is blocked and cannot be used."
+      },
+      "bookings": {
+        "type": "array",
+        "description": "Existing bookings. An empty array means there are none. Each item has start and end in whole minutes since midnight.",
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "start": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 1440
+            },
+            "end": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 1440
+            }
+          },
+          "required": ["start", "end"]
+        }
+      }
+    },
+    "required": ["start", "end", "now", "blocked", "bookings"]
+  }
+}
