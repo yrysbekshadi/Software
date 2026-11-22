@@ -2,9 +2,9 @@ schema: 1
 assignment: "sis-04"
 
 student:
-  name:
-  student_id:
-  group:
+  name: "Shadi Yrysbek"
+  student_id: "24B031125"
+  group: "PENDING — enter your actual course group"
   github: yrysbekshadi
 
 assistant:
