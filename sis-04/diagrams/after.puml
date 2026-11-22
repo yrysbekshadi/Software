@@ -1,0 +1,35 @@
+' The final implementation: separate data, rules, filtering and UI presentation.
+@startuml
+title After — Smart Campus modules and dependencies
+
+package "UI" {
+  [main.tsx] --> [App.tsx]
+  [App.tsx] --> [FilterPanel.tsx]
+  [App.tsx] --> [RoomList.tsx]
+  [App.tsx] --> [CheckForm.tsx]
+  [App.tsx] --> [ResultBanner.tsx]
+  [main.tsx] --> [index.css]
+  [RoomList.tsx] --> [time.ts]
+  [CheckForm.tsx] --> [time.ts]
+  [ResultBanner.tsx] --> [time.ts]
+}
+package "Domain data and rules" {
+  [rooms.ts
+Room + ROOMS]
+  [filter.ts
+filterRooms]
+  [booking.ts
+canBook + checkRoom]
+}
+[App.tsx] --> [rooms.ts]
+[App.tsx] --> [filter.ts]
+[App.tsx] --> [booking.ts]
+[filter.ts] ..> [rooms.ts]
+[booking.ts] ..> [rooms.ts]
+[CheckForm.tsx] --> [booking.ts]
+package "Vitest" {
+  [booking.test.ts] --> [booking.ts]
+  [filter.test.ts] --> [filter.ts]
+  [filter.test.ts] --> [booking.ts]
+}
+@enduml
