@@ -15,7 +15,7 @@ AI use level: D (required by the assignment). All AI-generated material must be 
 - `app/src/App.tsx`, `app/src/time.ts`, `app/src/components/*.tsx`, `app/src/index.css`
 - `app/src/booking.test.ts`, `app/src/filter.test.ts`
 - `app/README.md`, `diagrams/after.puml`, `report.md`, `submission.yml`
-- `evidence/*.png` (the supplied package's disclosure says these were captured by Claude's headless Chromium/Playwright process, not by the student using `npm run dev`)
+- `evidence/*.jpg` (the supplied package's disclosure says these were captured by Claude's headless Chromium/Playwright process, not by the student using `npm run dev`)
 
 The unchanged baseline in `app/` was copied from `week-08/app` before the implementation commit. Week 08's `canBook` decisions were preserved when adding `checkRoom` and shared constants.
 
