@@ -15,7 +15,7 @@ project:
   start_from: week-08
   baseline_commit: e0a6302
   language: ts
-  vitest: "3.2.4 (declared in package.json; actual RUN line not obtained)"
+  vitest: "3.2.7 (installed; package.json declares ^3.2.4)"
 
 counts:
   rooms: 5
@@ -28,7 +28,7 @@ checker:
   pass: 33
   fail: 0
   error: 0
-  commit:
+  commit: "42846d6"
   known_fails: []
 
 review_findings:
