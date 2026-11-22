@@ -1,0 +1,43 @@
+schema: 1
+assignment: "sis-04"
+
+student:
+  name:
+  student_id:
+  group:
+  github: yrysbekshadi
+
+assistant:
+  tool: ChatGPT
+  model: GPT-6
+
+project:
+  start_from: week-08
+  baseline_commit: e0a6302a2977c6e0892f3110bd63b8f4c5afb254
+  language: ts
+  vitest: 3.2.4
+
+counts:
+  rooms:
+  tests_original:
+  tests_final:
+  risks: 6
+  exchanges:
+
+checker:
+  pass:
+  fail:
+  error:
+  commit:
+  known_fails: []
+
+review_findings:
+  -
+  -
+  -
+
+honesty:
+  baseline_unchanged: yes
+  runs_unedited: yes
+  no_invented_metrics: yes
+  ai_usage_disclosed: yes

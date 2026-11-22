@@ -1,0 +1,13 @@
+@startuml
+title Baseline — Week 08
+package "App.tsx" {
+  [ROOMS (2 rooms)]
+  [React state + room selection]
+  [time parsing]
+  [check() UI handler]
+}
+[booking.ts] --> [canBook()]
+[App.tsx] --> [booking.ts]
+[main.tsx] --> [App.tsx]
+[App.tsx] --> [index.css]
+@enduml
