@@ -1,0 +1,71 @@
+# week-10/submission.yml — your declaration for this lab.
+#
+# Facts only. Every explanation goes in lab-report.md; nothing here repeats prose.
+# Fill every value. Check it before you push:
+#
+#     python tests/validate_submission.py
+#
+# The validator checks shape, never quality. A green run is the floor, not the grade.
+# If you cannot run Python, fill the file by hand against the comments — a malformed
+# file costs you nothing if the content is there.
+
+schema: 1
+week: "10"
+
+student:
+  name:
+  student_id:          # as in KBTU records, e.g. 00X000000
+  github:              # your GitHub username, the one that owns the repo
+
+assistant:
+  tool:                # the assistant you reviewed with: Bolt.new, Claude Code, Cursor, ChatGPT, ...
+  model:               # the exact model with its version, or: not displayed
+  environment:         # bolt | claude-code | cursor | copilot | chat | other
+
+project:
+  starting_point:      # week-08 | week-07
+  baseline_commit:     # the checkpoint of Part 0: git rev-parse --short HEAD after "baseline from week 08"
+  language:            # ts | js   the language of your booking module
+  vitest:              # the Vitest version from the "RUN  v..." line, e.g. 3.2.4
+
+counts:
+  claims_challenged:   # rows in lab-report.md §3.2
+  risks_registered:    # rows in the register, §4.1
+  risks_confirmed:     # of those, how many are confirmed
+  tests_final:         # tests in your final suite (the total of the §8.4 run)
+  agents_lines_changed: # lines of AGENTS.md your patch changed (the checker prints it under A2)
+
+audit:
+  level:               # 0 | 1 | 2 | 3   from lab-report.md §5.2
+
+decision:
+  top_two: []          # the IDs from §4.2, highest first, e.g. [R2, R4]
+  mitigated: []        # the two IDs you mitigated in §8, e.g. [R2, R4]
+  release:             # go | conditional | no-go
+
+checker:
+  # Numbers from YOUR last run of: python tests/check_audit.py
+  # They must add up to the number of checks it runs (31).
+  # Report them as they came out.
+  # A FAIL you report and explain in lab-report.md costs you nothing extra. A hidden one costs the criterion.
+  pass:
+  fail:
+  error:
+  commit:              # the commit you ran the checker at: git rev-parse --short HEAD
+                       # (normally the commit just before you commit this file — that is fine)
+  known_fails: []      # every check ID that is still FAIL or ERROR, explained in lab-report.md §9.3, e.g. [E2]
+
+review_findings:
+  # Three or more. One line each, and each one names what it is about: a risk ID (R1...), a
+  # constraint (C1-C6), an AC, a readiness row (1a-3d), or a file.
+  # Worthless:        "The AI found some risks that were not real"
+  # Worth everything: "R3: the AI said canBook mutates bookings; src/booking.ts has no push since the BUG-B fix - unsupported"
+  -
+  -
+  -
+
+honesty:
+  review_was_read_only:          # yes | no   the Task 2 review edited nothing
+  agents_patch_approved_by_me:   # yes | no   only what you approved in §6.2 went into app/AGENTS.md
+  outputs_unedited:              # yes | no   every run in lab-report.md is pasted from a real terminal
+  ai_usage_disclosed:            # yes | no   AI_USAGE.md is complete
