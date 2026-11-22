@@ -1,0 +1,51 @@
+schema: 1
+week: "10"
+
+student:
+  name: Shadi Yrysbek
+  student_id: 24B031125
+  github: yrysbekshadi
+
+assistant:
+  tool: ChatGPT
+  model: GPT-6
+  environment: chat
+
+project:
+  starting_point: week-08
+  baseline_commit: 38abccb
+  language: ts
+  vitest: "3.2.7"
+
+counts:
+  claims_challenged: 7
+  risks_registered: 5
+  risks_confirmed: 5
+  tests_final: 18
+  agents_lines_changed: 7
+
+audit:
+  level: 0
+
+decision:
+  top_two: [R2, R1]
+  mitigated: [R1, R2]
+  release: no-go
+
+checker:
+  pass: 31
+  fail: 0
+  error: 0
+  commit: a1ddb89
+  known_fails: []
+
+review_findings:
+  - "R1: src/booking.ts did not validate existing booking intervals, so a NaN start made the overlap predicate return false and a slot appear available."
+  - "R2: app/AGENTS.md told agents to use real KBTU data, add Supabase login/database and run a Netlify production deployment, contradicting C1-C6."
+  - "AC4: src/booking.test.ts T01 and T08 demonstrate that intervals touching at endpoints are available, contrary to the original playbook sentence."
+
+honesty:
+  review_was_read_only: yes
+  agents_patch_approved_by_me: yes
+  outputs_unedited: yes
+  ai_usage_disclosed: yes

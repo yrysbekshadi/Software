@@ -1,0 +1,44 @@
+ RUN  v3.2.7 C:/Users/yrysb/Desktop/Software-Repo/week-10/app
+
+ ❯ src/booking.test.ts (18 tests | 1 failed | 17 skipped) 9ms
+   ↓ canBook — assistant-generated first suite > T01 AC4: touching after an existing booking is available
+   ↓ canBook — assistant-generated first suite > T02 AC1: a request starting at the current time is unavailable
+   ↓ canBook — assistant-generated first suite > T03 AC1: a zero-duration request is unavailable
+   ↓ canBook — assistant-generated first suite > T04 AC1: a reversed request is unavailable
+   ↓ canBook — assistant-generated first suite > T05 AC1: a request ending after midnight is unavailable
+   ↓ canBook — assistant-generated first suite > T06 AC2: a request lasting exactly 120 minutes is available
+   ↓ canBook — assistant-generated first suite > T07 AC2: a request lasting 121 minutes is unavailable
+   ↓ canBook — assistant-generated first suite > T08 AC4: touching before an existing booking is available
+   ↓ canBook — assistant-generated first suite > T09 AC4: a partial overlap is unavailable
+   ↓ canBook — assistant-generated first suite > T10 AC4: a request containing an existing booking is unavailable
+   ↓ canBook — assistant-generated first suite > T11 AC4: a request inside an existing booking is unavailable
+   ↓ canBook — assistant-generated first suite > T12 AC4: an identical interval is unavailable
+   ↓ canBook — assistant-generated first suite > T13 AC3: a blocked room is unavailable
+   ↓ canBook — assistant-generated first suite > T14 AC4: a request is available when there are no existing bookings
+   × canBook — assistant-generated first suite > R1 AC4: a malformed existing booking interval is not treated as free 7ms
+     → expected true to be false // Object.is equality
+   ↓ canBook — assistant-generated first suite > AC5: an available check does not change the existing bookings
+   ↓ canBook — assistant-generated first suite > X1 AC1: a valid 120-minute request ending exactly at 24:00 is available
+   ↓ canBook — assistant-generated first suite > X2 AC4: a request between two touching bookings is available
+
+ FAIL  src/booking.test.ts > canBook — assistant-generated first suite > R1 AC4: a malformed existing booking interval is not treated as free
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ src/booking.test.ts:63:118
+     61| 
+     62|   test('R1 AC4: a malformed existing booking interval is not treated as free', () => {
+     63|     expect(canBook({ start: 630, end: 690, now: 540, blocked: false, bookings: [{ start: Number.NaN, end: 660 }] })).toBe(false);
+       |                                                                                                                      ^
+     64|   });
+     65| 
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 17 skipped (18)
+   Start at  21:03:44
+   Duration  486ms (transform 38ms, setup 0ms, collect 42ms, tests 9ms, environment 0ms, prepare 165ms
