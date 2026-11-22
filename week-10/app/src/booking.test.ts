@@ -59,6 +59,10 @@ describe('canBook — assistant-generated first suite', () => {
     expect(canBook({ start: 630, end: 690, now: 540, blocked: false, bookings: [] })).toBe(true);
   });
 
+  test('R1 AC4: a malformed existing booking interval is not treated as free', () => {
+    expect(canBook({ start: 630, end: 690, now: 540, blocked: false, bookings: [{ start: Number.NaN, end: 660 }] })).toBe(false);
+  });
+
   test('AC5: an available check does not change the existing bookings', () => {
     const bookings = [{ start: 600, end: 660 }];
     const before = structuredClone(bookings);
@@ -73,5 +77,4 @@ describe('canBook — assistant-generated first suite', () => {
   test('X2 AC4: a request between two touching bookings is available', () => {
     expect(canBook({ start: 660, end: 720, now: 540, blocked: false, bookings: [{ start: 600, end: 660 }, { start: 720, end: 780 }] })).toBe(true);
   });
-
 });
