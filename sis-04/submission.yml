@@ -4,8 +4,8 @@ assignment: "sis-04"
 student:
   name: "Shadi Yrysbek"
   student_id: "24B031125"
-  group: "PENDING — enter your actual course group"
-  github: yrysbekshadi
+  group: "Individual (no group assigned)"
+  github: "yrysbekshadi"
 
 assistant:
   tool: ChatGPT
@@ -25,11 +25,11 @@ counts:
   exchanges: 3
 
 checker:
-  pass: 29
-  fail: 4
+  pass: 33
+  fail: 0
   error: 0
   commit:
-  known_fails: [R1, R2, R3, L10]
+  known_fails: []
 
 review_findings:
   - "F2 in app/src/filter.ts uses every; T19 excludes rooms that have only one of two required equipment items, as the written requirement demands."

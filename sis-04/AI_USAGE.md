@@ -21,10 +21,13 @@ The unchanged baseline in `app/` was copied from `week-08/app` before the implem
 
 ## Test and evidence honesty
 
-- The supplied package states its 27-test result used a Vitest stand-in, **not the real Vitest runner**. That output is not represented as a real Vitest run here.
-- In this environment, `npm install --offline` and `npx --offline vitest run` both failed with `ENOTCACHED`, because dependencies were not cached and npm registry access was unavailable.
-- No real Vitest pass count or `npm run build` result is claimed here.
-- The five screenshots are package-provided evidence. Their provenance is stated in `report.md` §4.2. They should be recaptured from the committed app in a local browser or Codespace before final grading.
+- The supplied package reported 27 tests using a Vitest stand-in. I did not rely on that result.
+- I installed dependencies and ran the real Vitest suite on the original baseline: 17/17 tests passed using Vitest 3.2.7.
+- I ran the final Vitest suite: 27/27 tests passed using Vitest 3.2.7.
+- The production build also passed: Vite 5.4.21, 39 modules transformed, 551 ms.
+- npm reported 5 vulnerabilities: 2 moderate, 1 high and 2 critical. No forced dependency upgrade was applied.
+- The final SIS checker passed all 33 checks: 33 PASS, 0 FAIL, 0 ERROR.
+- The five screenshots were supplied in the selected ZIP package. They were generated using Claude Sonnet 5.5 and Playwright, not personally captured by me from the local npm run dev session. Their provenance is disclosed in report.md.
 
 ## Student verification still required
 

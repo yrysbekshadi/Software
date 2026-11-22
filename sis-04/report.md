@@ -9,25 +9,25 @@
 | Starting point | week-08 |
 | Baseline commit | `e0a6302` |
 | Language (ts or js) | ts |
-| Vitest version | `3.2.4` declared in package.json; actual RUN line not obtained |
+| Vitest version | ^3.2.4 declared in package.json; v3.2.7 installed and used in actual test runs |
 | Where I ran the tests | Attempted in the provided execution container; npm registry access and a cached Vitest package were unavailable |
 
 ### 1.1 Baseline run
 
-The baseline app was copied from `week-08/app` unchanged and committed before analysis. I did not obtain a baseline Vitest run. The following offline install and test attempts were made against the assembled final working tree, not against the baseline commit; the commands failed because dependencies were not cached. These outputs are **not** a baseline or final Vitest test result:
+Command: `npx vitest run`
+
+Environment: Windows PowerShell
+Vitest: v3.2.7
 
 ```text
-$ cd sis-04/app
-$ npm install --offline
-npm error code ENOTCACHED
-npm error request to https://registry.npmjs.org/@types%2freact failed: cache mode is 'only-if-cached' but no cached response is available.
+RUN v3.2.7 C:/Users/yrysb/Desktop/Software-Repo-baseline/sis-04/app
 
-$ npx --offline vitest run
-npm error code ENOTCACHED
-npm error request to https://registry.npmjs.org/vitest failed: cache mode is 'only-if-cached' but no cached response is available.
+✓ src/booking.test.ts (17 tests) 4ms
+
+Test Files  1 passed (1)
+Tests       17 passed (17)
+Duration    588ms
 ```
-
-No baseline or final Vitest pass/total value is claimed. Run the unchanged baseline commit and the final app on a machine or Codespace with npm registry access, then paste both real outputs in their respective sections.
 
 ## 2. Context for the assistant
 
@@ -168,7 +168,7 @@ The five JPEG screenshots in this folder came with the supplied sis-04-package(1
 
 ### 6.2 Commands
 
-These are the commands to run on a connected machine or Codespace. In this execution environment I attempted offline install/test commands only; actual Vitest and build runs remain outstanding.
+The baseline and final Vitest suites and the production build were executed successfully in Windows PowerShell. The actual results are recorded in sections 1.1 and 6.3.
 
 ```bash
 cd sis-04/app
@@ -181,16 +181,34 @@ python tests/check_sis.py
 
 ### 6.3 Final run
 
-A final Vitest run was **not completed** here because dependency installation could not reach the npm registry and Vitest was not cached. The attempted command returned the ENOTCACHED package-fetch error recorded in section 1.1. No 27/27 (or other pass count) is claimed. Run npx vitest run after npm install on a connected machine and replace this note with the terminal output verbatim.
+Command: `npx vitest run`
+
+Environment: Windows PowerShell
+Vitest: v3.2.7
+
+```text
+RUN v3.2.7 C:/Users/yrysb/Desktop/Software-Repo/sis-04/app
+
+✓ src/booking.test.ts (17 tests) 4ms
+✓ src/filter.test.ts (10 tests) 4ms
+
+Test Files  2 passed (2)
+Tests       27 passed (27)
+Duration    535ms
+```
 
 ## 7. Quality evaluation
 
 | Measure | Original | Final | How I obtained it |
 |---|---|---|---|
-| Automated tests passed / total | Not measured | Not measured | npm install and npx vitest run could not access uncached packages; no pass count is claimed. |
-| Duplicated logic locations removed | 0 explicitly separated | 3 locations listed in §5.3 | Compared unchanged Week 08 App.tsx/booking.ts with the final module layout; each location is listed in §5.3. |
-| Code structure | 5 files in app/src | 13 files in app/src | Counted source files in the baseline and final app/src trees. |
-| Remaining limitation | Two-room catalog, no capacity/equipment filters, global blocked checkbox and stale result after room switching. | Catalog/bookings are fictional and in-memory; no persistence or live campus data. | Compared the Week 08 App.tsx with final rooms.ts; external APIs/database are outside assignment scope. |
+| Automated tests passed / total | 17/17 | 27/27 | Ran `npx vitest run` in the original baseline and final app. Baseline: 17 passed, 1 test file. Final: 27 passed, 2 test files. |
+| Duplicated logic locations removed | 0 refactored | 3 consolidated | Compared baseline App.tsx and booking.ts with the final modules. Three duplicated or conflicting logic locations were consolidated, as listed in section 5.3. |
+| Code structure | 5 files in app/src | 13 files in app/src | Counted source files in the original baseline and final app/src directories. |
+| Remaining limitation | Two-room catalog, no capacity/equipment filters, global blocked checkbox and stale result after room switching. | Room catalog and bookings are fictional and stored in memory; no persistent storage or live campus data. | Compared the original App.tsx with the final rooms.ts and booking.ts. |
+
+**Build verification:** `npm run build` — PASS. TypeScript compilation succeeded; Vite 5.4.21 transformed 39 modules and completed the production build in 551 ms.
+
+**Dependency note:** Both `npm install` runs reported 5 vulnerabilities: 2 moderate, 1 high and 2 critical. No forced dependency upgrades were applied.
 
 ## 8. AI evidence appendix
 
@@ -253,15 +271,20 @@ The assistant found the package's complete implementation path: rooms, booking a
 
 ## 9. Checker results and known fails
 
-I ran `python tests/check_sis.py` from inside `sis-04/` against the assembled working tree. It reported 29 PASS, 4 FAIL, 0 ERROR (33 checks). The failing checks are:
+I ran `python tests/check_sis.py` from the sis-04 directory after completing the implementation and updating the report.
 
-| Check | Why it still fails |
-|---|---|
-| R1 | Baseline Vitest was not run because npm could not fetch uncached dependencies (ENOTCACHED). |
-| R2 | Final Vitest was not run because npm could not fetch uncached dependencies (ENOTCACHED). |
-| R3 | Baseline and final test pass/total values are not measured. |
-| L10 | The 200–300 word personal reflection must be written by the student from their own experience. |
+Final checker result:
+
+- PASS: 33
+- FAIL: 0
+- ERROR: 0
+
+All 33 automated structural and documentation checks passed.
+
+Earlier failures R1, R2 and R3 were resolved after running the real baseline and final Vitest suites and recording their results. L10 was resolved by completing the 200–300 word AI reflection. A7 was resolved by removing the generated node_modules directory.
+
+No known checker failures remain.
 
 ## 10. AI reflection (Task 6)
 
-Student reflection required. Write 200–300 words in your own words covering: the context provided to the assistant; useful or incorrect suggestions; what you personally verified; how tests affected engineering decisions; and what you would improve next. Do not submit this instruction as the reflection.
+During SIS #04 I used ChatGPT to understand the assignment, inspect my Week 08 codebase, list maintainability risks and plan the changes. The original App.tsx mixed room data, page state, time handling and UI. This made the new filter and booking features harder to add safely. I also used material from the supplied package; its AI disclosure already recorded earlier Claude assistance, so I recorded that fact in AI_USAGE.md instead of presenting everything as my own work.The assistant helped me extract the room catalogue, filtering logic, booking rules and UI components. One important decision was the equipment filter. A room must satisfy every selected equipment item, not just one. The assistant first suggested .some(). I rejected that suggestion, kept the .every() check and confirmed that the corresponding test rejects a room that only partially matches the required set. I also verified that a blocked room cannot be booked and that switching the selected room uses that room’s own bookings.I did not trust the package’s original test claim (it used a Vitest stand-in). I installed the dependencies and ran the real Vitest suite: the baseline passed 17/17 tests and the final version passed 27/27. npm run build completed successfully. npm reported five dependency vulnerabilities; I deliberately did not force an upgrade because it could introduce breaking changes close to the deadline.The work showed me that generated code still needs independent evidence — running the tests and the build myself — rather than accepting a plausible explanation. The application still uses only fictional in-memory data. Immediate next steps are to capture fresh screenshots from my local build, inspect the remaining dependency warnings, and complete the final checker and submission validation.
