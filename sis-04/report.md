@@ -98,15 +98,15 @@ filterRooms applies F1 (capacity >= attendees) and F2 (equipment.every(...)). Bl
 
 ### 4.2 Demonstration
 
-The five PNGs in this folder came with the supplied sis-04-package(1).zip. Its AI_USAGE.md says they were captured by Claude Sonnet 5.5 using headless Chromium/Playwright from an esbuild bundle, not by the student using npm run dev. They are disclosed as package-provided evidence and should be replaced with fresh local/Codespace captures before final grading if possible.
+The five JPEG screenshots in this folder came with the supplied sis-04-package(1).zip. Its AI_USAGE.md says they were captured by Claude Sonnet 5.5 using headless Chromium/Playwright from an esbuild bundle, not by the student using npm run dev. They are disclosed as package-provided evidence and should be replaced with fresh local/Codespace captures before final grading if possible.
 
 | Screenshot | What it shows |
 |---|---|
-| evidence/filter-match.png | 15 attendees with projector and whiteboard selected; B-204 and blocked E-120 remain because both match capacity/equipment. |
-| evidence/filter-empty.png | 40 attendees with whiteboard selected; zero rooms match and the page displays the F4 empty-state message. |
-| evidence/switch-a.png | No filters, A-101 selected, current time 09:00 and request 10:30–11:30; result is Unavailable because A-101 is booked 10:00–11:00. |
-| evidence/switch-b.png | The same 10:30–11:30 request with B-204 selected; result becomes Available because B-204 is only booked 13:00–14:30. |
-| evidence/narrow.png | Portrait phone viewport; 15 attendees and projector + whiteboard; fields stack vertically and the page remains readable. |
+| evidence/filter-match.jpg | 15 attendees with projector and whiteboard selected; B-204 and blocked E-120 remain because both match capacity/equipment. |
+| evidence/filter-empty.jpg | 40 attendees with whiteboard selected; zero rooms match and the page displays the F4 empty-state message. |
+| evidence/switch-a.jpg | No filters, A-101 selected, current time 09:00 and request 10:30–11:30; result is Unavailable because A-101 is booked 10:00–11:00. |
+| evidence/switch-b.jpg | The same 10:30–11:30 request with B-204 selected; result becomes Available because B-204 is only booked 13:00–14:30. |
+| evidence/narrow.jpg | Portrait phone viewport; 15 attendees and projector + whiteboard; fields stack vertically and the page remains readable. |
 
 ## 5. Refactoring
 
