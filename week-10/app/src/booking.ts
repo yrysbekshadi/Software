@@ -8,21 +8,28 @@ export type CanBookInput = {
   bookings: BookingInterval[];
 };
 
-// Returns true when the candidate interval is Available, otherwise false.
-// Times are minutes after midnight on the same day.
+const DAY_MINUTES = 1440;
+const MAX_DURATION_MINUTES = 120;
+
+function isValidInterval(interval: BookingInterval): boolean {
+  return Number.isFinite(interval.start)
+    && Number.isFinite(interval.end)
+    && 0 <= interval.start
+    && interval.start < interval.end
+    && interval.end <= DAY_MINUTES;
+}
+
+function overlaps(candidate: BookingInterval, existing: BookingInterval): boolean {
+  return candidate.start < existing.end && candidate.end > existing.start;
+}
+
+// A pure availability decision: valid inputs keep the original AC1-AC5 behaviour.
 export function canBook({ start, end, now, blocked, bookings }: CanBookInput): boolean {
-  let ok = true;
-  if (!(0 <= start && start < end && end <= 1440)) ok = false;
-  else if (!(start > now)) ok = false;
-  else if (end - start > 120) ok = false;
-  else if (blocked) ok = false;
-  else {
-    for (const booking of bookings) {
-      if (start < booking.end && end > booking.start) {
-        ok = false;
-        break;
-      }
-    }
-  }
-  return ok;
+  const candidate = { start, end };
+
+  if (!Number.isFinite(now) || !isValidInterval(candidate)) return false;
+  if (start <= now || end - start > MAX_DURATION_MINUTES || blocked) return false;
+  if (!Array.isArray(bookings) || !bookings.every(isValidInterval)) return false;
+
+  return !bookings.some((booking) => overlaps(candidate, booking));
 }
