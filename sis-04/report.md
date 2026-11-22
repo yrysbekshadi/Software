@@ -14,7 +14,7 @@
 
 ### 1.1 Baseline run
 
-The baseline app was copied from `week-08/app` unchanged and committed before analysis. I attempted an offline install and test invocation, but no dependency was cached. These are the actual command outputs; they are **not** a Vitest test result:
+The baseline app was copied from `week-08/app` unchanged and committed before analysis. I did not obtain a baseline Vitest run. The following offline install and test attempts were made against the assembled final working tree, not against the baseline commit; the commands failed because dependencies were not cached. These outputs are **not** a baseline or final Vitest test result:
 
 ```text
 $ cd sis-04/app
@@ -27,7 +27,7 @@ npm error code ENOTCACHED
 npm error request to https://registry.npmjs.org/vitest failed: cache mode is 'only-if-cached' but no cached response is available.
 ```
 
-No baseline pass/total value is claimed. A real baseline run remains outstanding and must be repeated on a machine or Codespace with npm registry access.
+No baseline or final Vitest pass/total value is claimed. Run the unchanged baseline commit and the final app on a machine or Codespace with npm registry access, then paste both real outputs in their respective sections.
 
 ## 2. Context for the assistant
 
