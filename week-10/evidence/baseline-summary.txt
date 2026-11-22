@@ -1,0 +1,8 @@
+Source: user-provided Windows PowerShell output, 2026-11-22.
+Command: npx vitest run
+Runtime: RUN v3.2.7
+Test Files: 1 passed (1)
+Tests: 17 passed (17)
+Start: 20:52:38
+Duration: 476ms
+Full output is pasted in lab-report.md §2.2.
