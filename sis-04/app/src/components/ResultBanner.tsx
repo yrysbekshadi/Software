@@ -10,10 +10,12 @@ type ResultBannerProps = {
 
 export default function ResultBanner({ room, request, available }: ResultBannerProps) {
   return (
-    <section className={`result ${available ? 'available' : 'unavailable'}`} role="status" aria-live="polite">
-      <span className="result-kicker">AVAILABILITY RESULT</span>
-      <p><strong>{available ? 'Available' : 'Unavailable'}</strong></p>
-      <span>{room.name} · {formatRange(request)}{room.blocked && ' · This room is blocked'}</span>
-    </section>
+    <p className={`result ${available ? 'available' : 'unavailable'}`} role="status">
+      <strong>{available ? 'Available' : 'Unavailable'}</strong>{' '}
+      <span>
+        {room.name}, {formatRange(request)}
+        {room.blocked && ' (this room is blocked)'}
+      </span>
+    </p>
   );
 }

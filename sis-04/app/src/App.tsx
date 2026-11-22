@@ -8,61 +8,42 @@ import RoomList from './components/RoomList';
 import { filterRooms } from './filter';
 import { EQUIPMENT_OPTIONS, ROOMS } from './rooms';
 
-// App owns presentation state only. Catalog data and decision rules live in their own modules.
+// The page only keeps state and wires the parts together. The rules live in booking.ts and
+// filter.ts, the data in rooms.ts, the markup in components/.
 export default function App() {
   const [attendees, setAttendees] = useState('1');
   const [equipment, setEquipment] = useState<string[]>([]);
-  const [roomId, setRoomId] = useState(ROOMS[0]?.id ?? '');
+  const [roomId, setRoomId] = useState(ROOMS.length ? ROOMS[0].id : '');
   const [request, setRequest] = useState<BookingWindow | null>(null);
 
-  const criteria = { attendees: Math.max(1, Number(attendees) || 1), equipment };
+  const criteria = { attendees: Number(attendees) || 0, equipment };
   const rooms = filterRooms(ROOMS, criteria);
-  // Derive the selected room from the current filtered list. Never retain a stale room object.
-  const room = rooms.find(item => item.id === roomId) ?? null;
-  // Recalculate for the selected room on every render: this is the F5 refresh behavior.
+  const room = rooms.find(r => r.id === roomId) ?? null;
   const available = room && request ? checkRoom(ROOMS, room.id, request) : null;
 
   function toggleEquipment(item: string) {
-    setEquipment(current =>
-      current.includes(item) ? current.filter(value => value !== item) : [...current, item],
-    );
-    setRequest(null);
-  }
-
-  function changeAttendees(value: string) {
-    setAttendees(value);
-    setRequest(null);
+    setEquipment(current => (current.includes(item) ? current.filter(i => i !== item) : [...current, item]));
   }
 
   return (
     <main className="page">
-      <header className="page-header">
-        <p className="eyebrow">SMART CAMPUS · ROOM FINDER</p>
-        <h1>Room availability checker</h1>
-        <p className="intro">Find a room that fits your group, then check its time slots.</p>
-      </header>
-
+      <h1>Smart Campus Room Availability</h1>
       <FilterPanel
         attendees={attendees}
-        onAttendeesChange={changeAttendees}
+        onAttendeesChange={setAttendees}
         options={EQUIPMENT_OPTIONS}
         selected={equipment}
         onToggle={toggleEquipment}
       />
-
       <RoomList
         rooms={rooms}
         total={ROOMS.length}
         criteria={criteria}
         selectedId={room ? room.id : null}
-        onSelect={id => { setRoomId(id); setRequest(null); }}
+        onSelect={setRoomId}
       />
-
       <CheckForm roomName={room ? room.name : null} onCheck={setRequest} />
-
-      {room && request && available !== null && (
-        <ResultBanner room={room} request={request} available={available} />
-      )}
+      {room && request && available !== null && <ResultBanner room={room} request={request} available={available} />}
     </main>
   );
 }

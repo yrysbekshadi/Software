@@ -18,12 +18,9 @@ function summarize({ attendees, equipment }: FilterCriteria): string {
 export default function RoomList({ rooms, total, criteria, selectedId, onSelect }: RoomListProps) {
   return (
     <section className="panel" aria-labelledby="rooms-title">
-      <div className="section-heading">
-        <div>
-          <p className="eyebrow">02 · MATCHING SPACES</p>
-          <h2 id="rooms-title">Available rooms <span className="count">{rooms.length} of {total} match</span></h2>
-        </div>
-      </div>
+      <h2 id="rooms-title">
+        Rooms <span className="count">{rooms.length} of {total} match</span>
+      </h2>
       {rooms.length === 0 ? (
         <p className="empty" role="status">
           No rooms match {summarize(criteria)}. Lower the number of attendees or remove an equipment item.
@@ -33,20 +30,13 @@ export default function RoomList({ rooms, total, criteria, selectedId, onSelect 
           {rooms.map(room => (
             <li key={room.id}>
               <label className={`room${room.id === selectedId ? ' selected' : ''}${room.blocked ? ' blocked' : ''}`}>
-                <input
-                  type="radio"
-                  name="room"
-                  value={room.id}
-                  checked={room.id === selectedId}
-                  onChange={() => onSelect(room.id)}
-                />
+                <input type="radio" name="room" value={room.id} checked={room.id === selectedId} onChange={() => onSelect(room.id)} />
                 <span className="room-body">
                   <span className="room-name">
                     {room.name}
                     {room.blocked && <span className="badge">Blocked</span>}
-                    {room.id === selectedId && <span className="selected-note">Selected</span>}
                   </span>
-                  <span className="room-meta">{room.capacity} seats · {room.equipment.join(', ')}</span>
+                  <span className="room-meta">{room.capacity} seats, {room.equipment.join(', ')}</span>
                   <span className="room-meta">
                     {room.bookings.length ? `Booked ${room.bookings.map(formatRange).join(', ')}` : 'No bookings'}
                   </span>
