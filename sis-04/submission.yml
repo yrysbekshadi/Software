@@ -13,28 +13,28 @@ assistant:
 
 project:
   start_from: week-08
-  baseline_commit: e0a6302a2977c6e0892f3110bd63b8f4c5afb254
+  baseline_commit: e0a6302
   language: ts
-  vitest: 3.2.4
+  vitest: "3.2.4 (declared in package.json; actual RUN line not obtained)"
 
 counts:
-  rooms:
-  tests_original:
-  tests_final:
-  risks: 6
-  exchanges:
+  rooms: 5
+  tests_original: 17
+  tests_final: 27
+  risks: 5
+  exchanges: 3
 
 checker:
-  pass:
-  fail:
-  error:
+  pass: 29
+  fail: 4
+  error: 0
   commit:
-  known_fails: []
+  known_fails: [R1, R2, R3, L10]
 
 review_findings:
-  -
-  -
-  -
+  - "F2 in app/src/filter.ts uses every; T19 excludes rooms that have only one of two required equipment items, as the written requirement demands."
+  - "F5 in app/src/booking.ts checkRoom looks up the requested room id and passes that room's bookings to canBook; T14 and T15 cover opposite outcomes."
+  - "AC5 in app/src/booking.ts canBook does not mutate bookings; T12 snapshots a fixed booking array and T17 snapshots a room catalog before calls."
 
 honesty:
   baseline_unchanged: yes
